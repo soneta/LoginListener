@@ -1,0 +1,11 @@
+﻿<?xml version="1.0"?>
+<DataForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.enova.pl/schema/form.xsd" Contexts = "License.All">
+  <Page CaptionHtml="After login" DataContext="{DataSource}">
+    <Group CaptionHtml="Po logowaniu">
+      <Label CaptionHtml="To jest testowe okno, które ma się pojawić zaraz po zalogowaniu do programu." />
+      <Label CaptionHtml="Zapewnia możliwość weryfikacji danych - aby się zalogować należy wpisać w polu kontrolnym wartość z pola wzorcowego." />
+      <Field EditValue="{Pattern}" CaptionHtml="Pole wzorcowe" />
+      <Field EditValue="{Control}" CaptionHtml="Pole kontrolne" />
+    </Group>
+  </Page>
+</DataForm>
