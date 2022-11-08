@@ -1,10 +1,10 @@
 ﻿using Soneta.Business;
 using Soneta.Business.App;
-using Soneta.Business.UI.Test;
+using Soneta.Business.UI;
 
 // rejestracja serwisu implementującego interfejs ILoginListenerUI
 // dla wszystkich zarejestrowanych w ten sposób serwisów zostanie podczas logowania zawołana metoda AfterLoginResult
-[assembly: Service(typeof(ILoginListenerUI), typeof(Soneta.AfterLoginTestUISample.Registration), Priority = 200)]
+[assembly: Service(typeof(ILoginListenerUI), typeof(Soneta.AfterLoginTestUISample.Registration), ServiceScope.Login, Priority = 200)]
 
 namespace Soneta.AfterLoginTestUISample
 {
@@ -36,7 +36,7 @@ namespace Soneta.AfterLoginTestUISample
         void ILoginListenerUI.AfterLoginResult(AfterLoginResultArgs args)
         {
             //warunek, jeżeli użytkownikiem jest administrator zostanie dla niego wyświetlony komunikat
-            if (args.Login.OperatorName == "Administrator")
+            if (args.Login.UserName == "Administrator")
                 args.Values.Add(new AfterLoginTestUISample());
         }
     }

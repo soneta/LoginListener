@@ -8,7 +8,7 @@ using Soneta.AfterLoginTestUI;
 
 // rejestracja serwisu implementującego interfejs ILoginListenerUI
 // dla wszystkich zarejestrowanych w ten sposób serwisów zostanie podczas logowania zawołana metoda AfterLoginResult
-[assembly: Service(typeof(ILoginListenerUI), typeof(Soneta.AfterLoginTestUI.Registration))]
+[assembly: Service(typeof(ILoginListenerUI), typeof(Soneta.AfterLoginTestUI.Registration), ServiceScope.Login)]
 
 
 namespace Soneta.AfterLoginTestUI
@@ -18,7 +18,7 @@ namespace Soneta.AfterLoginTestUI
     // Weryfikacja polega na porównaniu wpisanej wartości Control z losowo ustaloną wartością Pattern
     [DataFormStyle(UseDialog = true)]
     [Caption("Weryfikacja danych logowania")]
-    public class AfterLoginTestUI : IVerifiable
+    public class AfterLoginTestUI : IVerifiable, IContextable
     {
         // "techniczna" deklaracja zmiennej Currency - ze względu na formularze (pageform.xml) dodatek musi posiadać referencję do Soneta.Types
         Soneta.Types.Currency c1 = Soneta.Types.Currency.Zero;
@@ -26,6 +26,8 @@ namespace Soneta.AfterLoginTestUI
         string pattern;
         string control;
         Context context;
+
+        public Context Context => context;
 
         public AfterLoginTestUI(Context cx)
         {
